@@ -66,7 +66,6 @@ Or just mention an issue in conversation — the skill activates automatically w
 |------|---------|-----|
 | `gh` CLI | `brew install gh` | GitHub API access |
 | `jq` | `brew install jq` | Parse project field IDs |
-| `GITHUB_TOKEN` | [Create token](https://github.com/settings/tokens) | Screenshot uploads |
 
 ### GitHub CLI scopes
 

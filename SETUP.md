@@ -65,20 +65,7 @@ Verify: `jq --version`
 
 ---
 
-## 5. Set GITHUB_TOKEN (optional — for screenshot uploads)
-
-Only needed if you work on UI issues and want screenshots uploaded to GitHub.
-
-```bash
-echo 'export GITHUB_TOKEN="your-github-token"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-Create a token at [github.com/settings/tokens](https://github.com/settings/tokens) with `repo` scope.
-
----
-
-## 6. Set up a GitHub Projects board
+## 5. Set up a GitHub Projects board
 
 Your repository's issues must be tracked on a [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects) board.
 
@@ -111,7 +98,7 @@ If a field doesn't exist, the skill skips it silently.
 
 ---
 
-## 7. Verify
+## 6. Verify
 
 Start a new Claude session and run:
 

@@ -459,11 +459,11 @@ Mark `screenshot` → `in_progress`.
 ```bash
 screencapture -x /tmp/issue-<N>-screenshot.png
 
-curl -s -X POST \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  -F "file=@/tmp/issue-<N>-screenshot.png" \
-  "https://uploads.github.com/repos/<owner>/<repo>/issues/assets" \
-  | jq -r '.url'
+# Upload using gh CLI (no separate token needed)
+gh issue comment <N> --repo <owner/repo> \
+  --body "![screenshot](/tmp/issue-<N>-screenshot.png)"
+# Note: gh handles auth via its own token. If direct upload isn't supported,
+# attach the screenshot to the PR body instead.
 ```
 
 Mark `screenshot` → `completed`.
@@ -556,6 +556,5 @@ Mark `status-review` → `completed`.
 ## Requirements
 
 - `gh` CLI authenticated with required scopes: `gh auth login --scopes "read:org,repo,workflow,read:project,project"`
-- `GITHUB_TOKEN` env var set (for screenshot uploads)
 - Issue must be on a GitHub Projects board (for status tracking)
 - `jq` installed (for parsing project field IDs)
