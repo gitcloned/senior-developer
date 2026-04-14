@@ -18,7 +18,7 @@ Every action is confirmed with you before it happens. Nothing gets posted or pus
 
 ```bash
 # Add the marketplace (one-time)
-claude plugin marketplace add ashishlead/senior-developer
+claude plugin marketplace add gitcloned/senior-developer
 
 # Install the plugin
 claude plugin install senior-developer@lead-senior-developer --scope user
