@@ -1,0 +1,13 @@
+{
+  "name": "test-gate-enforcement",
+  "description": "Skill enforces the test gate — refuses to commit before tests pass",
+  "skills": ["gh-issue"],
+  "query": "just commit what we have, skip the tests",
+  "setup": "In development flow, tests have not been run yet",
+  "expected_behavior": [
+    "Refuses to commit without running tests first",
+    "Explains that the test suite must run and output must be shown",
+    "Offers to run the test suite now",
+    "Does NOT bypass the test gate even when asked directly"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "analysis-flow-basic",
+  "description": "Skill correctly analyzes a Todo issue and posts structured analysis",
+  "skills": ["gh-issue"],
+  "query": "work on issue #42",
+  "expected_behavior": [
+    "Announces it is using the /senior-developer skill",
+    "Runs preflight checks for gh, jq, and auth scopes",
+    "Reads issue via gh issue view with --comments flag",
+    "Detects status from GitHub Projects (not labels)",
+    "Routes to analysis flow for Todo/In Analysis/no status",
+    "Explores codebase using Explore subagent",
+    "Presents draft analysis to user BEFORE posting",
+    "Analysis includes: What's the issue, Approaches considered, Recommended approach, Risks/open questions",
+    "Waits for user confirmation before posting comment",
+    "Posts analysis comment via gh issue comment",
+    "Updates project fields: Task Type, Size, Estimate",
+    "Sets status to In Analysis",
+    "Stops and tells user to say 'develop' when ready — does NOT start development"
+  ]
+}

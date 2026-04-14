@@ -1,0 +1,13 @@
+{
+  "name": "issue-not-on-board",
+  "description": "Skill handles an issue that is not on any GitHub Projects board",
+  "skills": ["gh-issue"],
+  "query": "work on issue #99",
+  "expected_behavior": [
+    "Reads issue successfully",
+    "Attempts to detect status from GitHub Projects",
+    "Detects that the issue is not on any project board",
+    "Informs the user clearly",
+    "Asks how to proceed — does NOT assume a default status"
+  ]
+}

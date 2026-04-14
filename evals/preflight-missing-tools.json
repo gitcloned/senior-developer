@@ -1,0 +1,13 @@
+{
+  "name": "preflight-missing-tools",
+  "description": "Skill stops gracefully when required tools are missing",
+  "skills": ["gh-issue"],
+  "query": "work on issue #42",
+  "setup": "Simulate: gh not installed",
+  "expected_behavior": [
+    "Detects that gh CLI is not installed",
+    "Provides install instructions for macOS and Linux",
+    "Stops and waits for user to install — does NOT proceed",
+    "Does NOT attempt to read the issue or access GitHub API"
+  ]
+}

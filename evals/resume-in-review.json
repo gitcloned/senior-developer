@@ -1,0 +1,13 @@
+{
+  "name": "resume-in-review",
+  "description": "Skill correctly handles an issue already In Review",
+  "skills": ["gh-issue"],
+  "query": "work on issue #42",
+  "expected_behavior": [
+    "Reads issue and detects In Review status",
+    "Informs user that the issue is In Review",
+    "Asks what the user wants to do",
+    "Does NOT restart analysis or development",
+    "Does NOT create a new branch or PR"
+  ]
+}

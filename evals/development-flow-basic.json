@@ -1,0 +1,25 @@
+{
+  "name": "development-flow-basic",
+  "description": "Skill runs full development flow for an In Progress issue",
+  "skills": ["gh-issue"],
+  "query": "develop #42",
+  "expected_behavior": [
+    "Announces it is using the /senior-developer skill",
+    "Runs preflight checks",
+    "Reads issue and detects In Progress status",
+    "Assesses current state: branch, dev plan, PR, analysis",
+    "Presents assessment and asks for confirmation",
+    "Creates task list via TodoWrite with all 12 standard tasks",
+    "Pre-completes tasks that are already done based on assessment",
+    "Posts development plan to issue after user confirmation",
+    "Creates feature branch with issues/<N>-<description> naming",
+    "Writes failing tests BEFORE implementation (TDD)",
+    "Implements until tests pass",
+    "Runs full test suite and shows raw output",
+    "Enforces test gate — does NOT commit until tests shown passing",
+    "Commits and pushes to feature branch",
+    "Creates PR with 'Closes #<N>' in body",
+    "Posts structured completion comment with PR link and test output",
+    "Sets status to In Review"
+  ]
+}

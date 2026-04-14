@@ -1,0 +1,11 @@
+{
+  "name": "lead-senior-developer",
+  "owner": { "name": "Lead" },
+  "plugins": [
+    {
+      "name": "senior-developer",
+      "source": "./",
+      "description": "Works on GitHub issues like a senior developer — analysis, TDD, structured PRs."
+    }
+  ]
+}

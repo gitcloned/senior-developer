@@ -1,0 +1,13 @@
+{
+  "name": "existing-analysis",
+  "description": "Skill detects and handles an existing analysis comment",
+  "skills": ["gh-issue"],
+  "query": "work on issue #42",
+  "setup": "Issue has an existing comment starting with '## Analysis'",
+  "expected_behavior": [
+    "Detects existing analysis comment on the issue",
+    "Presents summary of existing analysis to user",
+    "Offers three options: proceed with existing, revise, or start fresh",
+    "Waits for user input — does NOT overwrite existing analysis automatically"
+  ]
+}
