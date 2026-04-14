@@ -1,7 +1,7 @@
 {
   "name": "resume-in-review",
   "description": "Skill correctly handles an issue already In Review",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "work on issue #42",
   "expected_behavior": [
     "Reads issue and detects In Review status",

@@ -1,7 +1,7 @@
 {
   "name": "development-flow-basic",
   "description": "Skill runs full development flow for an In Progress issue",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "develop #42",
   "expected_behavior": [
     "Announces it is using the /senior-developer skill",

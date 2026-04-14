@@ -1,7 +1,7 @@
 {
   "name": "issue-not-on-board",
   "description": "Skill handles an issue that is not on any GitHub Projects board",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "work on issue #99",
   "expected_behavior": [
     "Reads issue successfully",

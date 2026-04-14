@@ -8,7 +8,7 @@ A standalone Claude Code skill that works on GitHub issues with a structured wor
 
 ```
 .claude-plugin/          # Plugin registration (plugin.json, marketplace.json)
-skills/gh-issue/         # The skill itself
+skills/senior-developer/  # The skill itself
   SKILL.md               # Main instructions — Claude reads this on activation
   github-status-helper.md # GitHub Projects API commands (reference, loaded on demand)
 evals/                   # Evaluation test cases
@@ -23,7 +23,7 @@ evals/                   # Evaluation test cases
 
 ## Working on the skill
 
-1. Read `skills/gh-issue/SKILL.md` to understand current behavior
+1. Read `skills/senior-developer/SKILL.md` to understand current behavior
 2. Check `evals/` for existing test coverage
 3. Make changes to SKILL.md
 4. Test manually on a real GitHub issue

@@ -9,7 +9,7 @@ This is a **markdown-only** Claude Code skill. There's no runtime code — just 
 ### File structure
 
 ```
-skills/gh-issue/
+skills/senior-developer/
 ├── SKILL.md                  # Main skill instructions (the prompt)
 └── github-status-helper.md   # GitHub Projects API reference commands
 ```
@@ -64,7 +64,7 @@ Evals live in `evals/` as JSON files. Each eval describes a scenario and expecte
 {
   "name": "analysis-flow-basic",
   "description": "Skill correctly analyzes a Todo issue and posts structured analysis",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "work on issue #42",
   "expected_behavior": [
     "Runs preflight checks (gh, jq, auth)",

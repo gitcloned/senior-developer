@@ -1,7 +1,7 @@
 {
   "name": "preflight-missing-tools",
   "description": "Skill stops gracefully when required tools are missing",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "work on issue #42",
   "setup": "Simulate: gh not installed",
   "expected_behavior": [

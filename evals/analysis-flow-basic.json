@@ -1,7 +1,7 @@
 {
   "name": "analysis-flow-basic",
   "description": "Skill correctly analyzes a Todo issue and posts structured analysis",
-  "skills": ["gh-issue"],
+  "skills": ["senior-developer"],
   "query": "work on issue #42",
   "expected_behavior": [
     "Announces it is using the /senior-developer skill",
