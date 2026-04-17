@@ -1,21 +1,21 @@
 {
   "name": "analysis-flow-basic",
-  "description": "Skill correctly analyzes a Todo issue and posts structured analysis",
+  "description": "New issue gets analyzed and the analysis is shared for review before posting",
   "skills": ["senior-developer"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Announces it is using the /senior-developer skill",
-    "Runs preflight checks for gh, jq, and auth scopes",
-    "Reads issue via gh issue view with --comments flag",
-    "Detects status from GitHub Projects (not labels)",
-    "Routes to analysis flow for Todo/In Analysis/no status",
-    "Explores codebase using Explore subagent",
-    "Presents draft analysis to user BEFORE posting",
-    "Analysis includes: What's the issue, Approaches considered, Recommended approach, Risks/open questions",
-    "Waits for user confirmation before posting comment",
-    "Posts analysis comment via gh issue comment",
-    "Updates project fields: Task Type, Size, Estimate",
-    "Sets status to In Analysis",
-    "Stops and tells user to say 'develop' when ready — does NOT start development"
+    "Says it's using the /senior-developer skill",
+    "Checks that gh, jq, and auth are set up before doing anything",
+    "Fetches the issue details including comments",
+    "Checks the issue's status from the project board, not labels",
+    "Recognizes this is a new issue and starts analyzing it",
+    "Looks around the codebase to understand what's relevant",
+    "Shows the draft analysis to the user before posting anything",
+    "Analysis covers: what's wrong, options considered, recommendation, and open questions",
+    "Waits for the user to approve before posting",
+    "Posts the analysis as a comment on the issue",
+    "Sets project fields like task type, size, and estimate",
+    "Moves the status to In Analysis",
+    "Stops here and waits — does not jump into coding"
   ]
 }

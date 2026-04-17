@@ -1,13 +1,13 @@
 {
   "name": "resume-in-review",
-  "description": "Skill correctly handles an issue already In Review",
+  "description": "Issue already in review is surfaced without restarting any work",
   "skills": ["senior-developer"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Reads issue and detects In Review status",
-    "Informs user that the issue is In Review",
-    "Asks what the user wants to do",
-    "Does NOT restart analysis or development",
-    "Does NOT create a new branch or PR"
+    "Sees the issue is already In Review",
+    "Tells the user it's in review",
+    "Asks what they'd like to do",
+    "Does not restart analysis or development",
+    "Does not create a new branch or PR"
   ]
 }

@@ -1,13 +1,12 @@
 {
   "name": "issue-not-on-board",
-  "description": "Skill handles an issue that is not on any GitHub Projects board",
+  "description": "Issue not on any project board is flagged to the user",
   "skills": ["senior-developer"],
   "query": "work on issue #99",
   "expected_behavior": [
-    "Reads issue successfully",
-    "Attempts to detect status from GitHub Projects",
-    "Detects that the issue is not on any project board",
-    "Informs the user clearly",
-    "Asks how to proceed — does NOT assume a default status"
+    "Fetches the issue successfully",
+    "Tries to find the issue on a project board",
+    "Tells the user the issue isn't on any board",
+    "Asks what to do next — does not assume a default status"
   ]
 }

@@ -1,13 +1,13 @@
 {
   "name": "test-gate-enforcement",
-  "description": "Skill enforces the test gate — refuses to commit before tests pass",
+  "description": "Asking to skip tests is refused — tests must pass before committing",
   "skills": ["senior-developer"],
   "query": "just commit what we have, skip the tests",
   "setup": "In development flow, tests have not been run yet",
   "expected_behavior": [
     "Refuses to commit without running tests first",
-    "Explains that the test suite must run and output must be shown",
-    "Offers to run the test suite now",
-    "Does NOT bypass the test gate even when asked directly"
+    "Explains that tests need to run and pass before committing",
+    "Offers to run the tests now",
+    "Holds firm even when directly asked to skip"
   ]
 }

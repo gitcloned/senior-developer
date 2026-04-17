@@ -1,13 +1,13 @@
 {
   "name": "preflight-missing-tools",
-  "description": "Skill stops gracefully when required tools are missing",
+  "description": "Missing tools are caught early with install instructions",
   "skills": ["senior-developer"],
   "query": "work on issue #42",
   "setup": "Simulate: gh not installed",
   "expected_behavior": [
-    "Detects that gh CLI is not installed",
-    "Provides install instructions for macOS and Linux",
-    "Stops and waits for user to install — does NOT proceed",
-    "Does NOT attempt to read the issue or access GitHub API"
+    "Notices gh is not installed before doing anything else",
+    "Shows how to install it on macOS and Linux",
+    "Stops and waits — does not try to continue without it",
+    "Does not attempt to access GitHub at all"
   ]
 }
