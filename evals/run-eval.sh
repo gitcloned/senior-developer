@@ -1,14 +1,15 @@
 #!/bin/bash
-# Eval runner for senior-developer skill
-# Usage: ./evals/run-eval.sh [eval-name] [model]
+# Eval runner for work-on-issue skill
+# Usage: ./evals/run-eval.sh [eval-name] [model] [judge-model]
 #
 # Runs Claude in --print mode with the skill loaded, sends the eval query,
-# and checks if the output mentions expected behaviors.
+# and uses an LLM judge to evaluate expected behaviors.
 #
 # Examples:
 #   ./evals/run-eval.sh analysis-flow-basic
-#   ./evals/run-eval.sh analysis-flow-basic haiku
-#   ./evals/run-eval.sh all                    # run all evals
+#   ./evals/run-eval.sh analysis-flow-basic sonnet
+#   ./evals/run-eval.sh analysis-flow-basic sonnet haiku
+#   ./evals/run-eval.sh all
 
 set -euo pipefail
 
@@ -16,6 +17,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 MODEL="${2:-sonnet}"
 EVAL_NAME="${1:-all}"
+JUDGE_MODEL="${3:-haiku}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -47,6 +49,42 @@ cleanup_eval_env() {
   fi
 }
 
+judge_behaviors() {
+  local output="$1"
+  local eval_file="$2"
+
+  local behaviors
+  behaviors=$(jq -r '.expected_behavior[]' "$eval_file")
+
+  # Build numbered list
+  local behavior_list=""
+  local i=1
+  while IFS= read -r b; do
+    behavior_list="${behavior_list}${i}. ${b}
+"
+    i=$((i + 1))
+  done <<< "$behaviors"
+
+  local judge_prompt="You are an eval judge. Given the output of a Claude skill invocation, determine whether each expected behavior was demonstrated.
+
+<skill_output>
+${output}
+</skill_output>
+
+<expected_behaviors>
+${behavior_list}
+</expected_behaviors>
+
+For each numbered behavior, respond with exactly one line in this format:
+PASS <number>
+or
+FAIL <number>
+
+Only output PASS/FAIL lines, nothing else. A behavior PASSES if the output demonstrates or is consistent with that behavior. A behavior FAILS only if the output clearly contradicts it or shows no evidence of it."
+
+  claude --print --model "$JUDGE_MODEL" "$judge_prompt" 2>/dev/null
+}
+
 run_single_eval() {
   local eval_file="$1"
   local name
@@ -63,6 +101,7 @@ run_single_eval() {
   echo "  Description: ${description}"
   echo "  Query: ${query}"
   echo "  Model: ${MODEL}"
+  echo "  Judge: ${JUDGE_MODEL}"
   echo ""
 
   # Run Claude with the skill loaded, in print mode
@@ -81,28 +120,26 @@ run_single_eval() {
 
   cleanup_eval_env
 
-  # Check expected behaviors
-  local expected
-  expected=$(jq -r '.expected_behavior[]' "$eval_file")
+  # Judge expected behaviors using LLM
+  local judge_output
+  judge_output=$(judge_behaviors "$output" "$eval_file")
+
   local pass_count=0
   local fail_count=0
   local total=0
+  local i=1
 
   while IFS= read -r behavior; do
     total=$((total + 1))
-    # Simple keyword check — not exact match, just presence of key concepts
-    # Extract key words from the behavior (3+ char words)
-    local keywords
-    keywords=$(echo "$behavior" | tr ' ' '\n' | grep -E '.{4,}' | head -5 | tr '\n' '|' | sed 's/|$//')
-
-    if echo "$output" | grep -iqE "$keywords" 2>/dev/null; then
+    if echo "$judge_output" | grep -qE "^PASS ${i}$|^PASS ${i} "; then
       echo -e "  ${GREEN}PASS${NC} $behavior"
       pass_count=$((pass_count + 1))
     else
-      echo -e "  ${RED}MISS${NC} $behavior"
+      echo -e "  ${RED}FAIL${NC} $behavior"
       fail_count=$((fail_count + 1))
     fi
-  done <<< "$expected"
+    i=$((i + 1))
+  done <<< "$(jq -r '.expected_behavior[]' "$eval_file")"
 
   echo ""
   echo -e "  Result: ${pass_count}/${total} behaviors detected"
@@ -121,6 +158,7 @@ run_single_eval() {
 # Main
 echo "Senior Developer Skill — Eval Runner"
 echo "Model: ${MODEL}"
+echo "Judge: ${JUDGE_MODEL}"
 
 if [ "$EVAL_NAME" = "all" ]; then
   total_pass=0
