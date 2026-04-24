@@ -22,6 +22,31 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+setup_eval_env() {
+  local eval_file="$1"
+  local hide_tools
+  hide_tools=$(jq -r '.setup_env.hide_tools // [] | .[]' "$eval_file" 2>/dev/null)
+
+  EVAL_ENV_DIR=""
+  if [ -n "$hide_tools" ]; then
+    EVAL_ENV_DIR=$(mktemp -d)
+    for tool in $hide_tools; do
+      cat > "$EVAL_ENV_DIR/$tool" <<SHADOW
+#!/bin/bash
+echo "${tool}: command not found" >&2
+exit 127
+SHADOW
+      chmod +x "$EVAL_ENV_DIR/$tool"
+    done
+  fi
+}
+
+cleanup_eval_env() {
+  if [ -n "$EVAL_ENV_DIR" ] && [ -d "$EVAL_ENV_DIR" ]; then
+    rm -rf "$EVAL_ENV_DIR"
+  fi
+}
+
 run_single_eval() {
   local eval_file="$1"
   local name
@@ -31,6 +56,8 @@ run_single_eval() {
   local description
   description=$(jq -r '.description' "$eval_file")
 
+  setup_eval_env "$eval_file"
+
   echo ""
   echo -e "${YELLOW}━━━ Eval: ${name} ━━━${NC}"
   echo "  Description: ${description}"
@@ -39,13 +66,20 @@ run_single_eval() {
   echo ""
 
   # Run Claude with the skill loaded, in print mode
+  local eval_path="$PATH"
+  if [ -n "$EVAL_ENV_DIR" ]; then
+    eval_path="$EVAL_ENV_DIR:$PATH"
+  fi
+
   local output
-  output=$(cd "$REPO_DIR" && claude \
+  output=$(cd "$REPO_DIR" && PATH="$eval_path" claude \
     --print \
     --model "$MODEL" \
     --plugin-dir "$REPO_DIR" \
     --dangerously-skip-permissions \
     "$query" 2>&1) || true
+
+  cleanup_eval_env
 
   # Check expected behaviors
   local expected
