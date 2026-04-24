@@ -1,14 +1,12 @@
 {
   "name": "analysis-flow-basic",
-  "description": "New issue gets skill activation, preflight checks, and context confirmation",
+  "description": "New issue gets context confirmation with correct repo, issue, and branch",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Announces it is using the /work-on-issue skill",
-    "Runs preflight checks for gh and jq",
-    "Fetches the issue from GitHub",
     "Identifies the repo and issue number correctly",
-    "Confirms context with the user before proceeding — shows repo, issue number, and branch"
+    "Shows the branch to work from",
+    "Asks the user to confirm before proceeding"
   ],
   "future_multi_turn_behavior": [
     "Checks the issue's status from the project board",

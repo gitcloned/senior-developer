@@ -1,13 +1,11 @@
 {
   "name": "resume-in-review",
-  "description": "Issue reference triggers skill activation without restarting work",
+  "description": "Issue reference triggers context confirmation without restarting work",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Announces it is using the /work-on-issue skill",
-    "Runs preflight checks",
-    "Fetches the issue from GitHub",
-    "Confirms context with the user before proceeding",
+    "Identifies the issue and repo",
+    "Asks the user to confirm before proceeding",
     "Does not create a new branch or PR in the first response"
   ],
   "future_multi_turn_behavior": [

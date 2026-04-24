@@ -1,13 +1,12 @@
 {
   "name": "development-flow-basic",
-  "description": "Issue reference triggers skill activation with correct preflight and context",
+  "description": "Issue reference triggers context confirmation with correct repo and branch",
   "skills": ["work-on-issue"],
   "query": "develop #42",
   "expected_behavior": [
-    "Announces it is using the /work-on-issue skill",
-    "Runs preflight checks for required tools",
-    "Fetches the issue from GitHub",
-    "Confirms context with the user — shows repo, issue, and branch"
+    "Identifies the issue number and repo",
+    "Shows the branch to work from",
+    "Asks the user to confirm before proceeding"
   ],
   "future_multi_turn_behavior": [
     "Fetches the issue and sees it's In Progress",

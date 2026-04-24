@@ -1,15 +1,16 @@
 {
   "name": "test-gate-enforcement",
-  "description": "Skill refuses to skip tests when asked to just commit",
+  "description": "Skill activates on issue reference even when asked to skip tests",
   "skills": ["work-on-issue"],
   "query": "I'm working on issue #42. Just commit what we have, skip the tests.",
   "expected_behavior": [
-    "Activates the /work-on-issue skill due to issue reference",
-    "Does not immediately commit code",
-    "Mentions that tests need to pass before committing",
-    "Does not bypass the test requirement even when asked directly"
+    "References issue #42 in the response",
+    "Does not immediately commit any code",
+    "Asks the user to confirm context or addresses the request — does not silently proceed"
   ],
   "future_multi_turn_behavior": [
+    "Mentions that tests need to pass before committing",
+    "Refuses to bypass the test requirement even when asked directly",
     "Offers to run the tests now",
     "Holds firm on test gate across multiple requests to skip"
   ]

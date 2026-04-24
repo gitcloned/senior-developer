@@ -1,13 +1,12 @@
 {
   "name": "existing-analysis",
-  "description": "Issue with existing analysis triggers skill and confirms context",
+  "description": "Issue reference triggers skill and engages with the user about the issue",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Announces it is using the /work-on-issue skill",
-    "Runs preflight checks",
-    "Identifies the correct issue and repo",
-    "Confirms context with the user before taking action"
+    "References issue #42 in the response",
+    "Mentions the repo or asks which repo the issue belongs to",
+    "Asks the user something before taking action — either to confirm context or clarify details"
   ],
   "future_multi_turn_behavior": [
     "Notices there's already an analysis on the issue",

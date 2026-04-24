@@ -1,12 +1,15 @@
 {
   "name": "issue-not-on-board",
-  "description": "Issue not on any project board is flagged to the user",
+  "description": "Non-existent or untracked issue triggers skill and asks for confirmation",
   "skills": ["work-on-issue"],
   "query": "work on issue #99",
   "expected_behavior": [
-    "Fetches the issue successfully",
-    "Tries to find the issue on a project board",
-    "Tells the user the issue isn't on any board",
+    "References issue #99 in the response",
+    "Identifies the repo from the current directory",
+    "Asks the user something before proceeding — either to confirm context or to clarify the issue"
+  ],
+  "future_multi_turn_behavior": [
+    "Tells the user the issue is not on any project board",
     "Asks what to do next — does not assume a default status"
   ]
 }
