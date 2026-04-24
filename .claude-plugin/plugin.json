@@ -1,5 +1,5 @@
 {
-  "name": "senior-developer",
+  "name": "sd",
   "description": "A Claude Code skill that works on GitHub issues like a senior developer — status-driven analysis, TDD implementation, and structured PR delivery. Use /senior-developer #123 to start.",
   "author": { "name": "Lead" }
 }
