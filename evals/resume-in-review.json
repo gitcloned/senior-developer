@@ -1,7 +1,7 @@
 {
   "name": "resume-in-review",
   "description": "Issue already in review is surfaced without restarting any work",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
     "Sees the issue is already In Review",

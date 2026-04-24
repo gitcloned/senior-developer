@@ -1,10 +1,10 @@
 {
   "name": "development-flow-basic",
   "description": "Issue in progress gets a full development cycle: plan, tests, code, PR",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "develop #42",
   "expected_behavior": [
-    "Says it's using the /senior-developer skill",
+    "Says it's using the /work-on-issue skill",
     "Checks that required tools are set up",
     "Fetches the issue and sees it's In Progress",
     "Reviews what's already done: branch, plan, PR, analysis",

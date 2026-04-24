@@ -103,7 +103,7 @@ If a field doesn't exist, the skill skips it silently.
 Start a new Claude session and run:
 
 ```
-/senior-developer #1
+/work-on-issue #1
 ```
 
 Expected: the skill reads the issue, checks its status, and confirms context with you before taking any action.

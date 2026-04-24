@@ -1,7 +1,7 @@
 {
   "name": "existing-analysis",
   "description": "Issue that already has an analysis gets handled without overwriting it",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "setup": "Issue has an existing comment starting with '## Analysis'",
   "expected_behavior": [

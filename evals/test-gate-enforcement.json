@@ -1,7 +1,7 @@
 {
   "name": "test-gate-enforcement",
   "description": "Asking to skip tests is refused — tests must pass before committing",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "just commit what we have, skip the tests",
   "setup": "In development flow, tests have not been run yet",
   "expected_behavior": [

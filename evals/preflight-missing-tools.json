@@ -1,7 +1,7 @@
 {
   "name": "preflight-missing-tools",
   "description": "Missing tools are caught early with install instructions",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "setup": "Simulate: gh not installed",
   "expected_behavior": [

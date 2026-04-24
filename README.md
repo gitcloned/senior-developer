@@ -31,8 +31,8 @@ Then start a new Claude session.
 ## Usage
 
 ```
-/senior-developer #123
-/senior-developer https://github.com/owner/repo/issues/123
+/work-on-issue #123
+/work-on-issue https://github.com/owner/repo/issues/123
 ```
 
 Or just mention an issue in conversation — the skill activates automatically when it sees a GitHub issue reference.

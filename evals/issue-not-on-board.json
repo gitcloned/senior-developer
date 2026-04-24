@@ -1,7 +1,7 @@
 {
   "name": "issue-not-on-board",
   "description": "Issue not on any project board is flagged to the user",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "work on issue #99",
   "expected_behavior": [
     "Fetches the issue successfully",

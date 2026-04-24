@@ -3,7 +3,7 @@
   "owner": { "name": "Lead" },
   "plugins": [
     {
-      "name": "senior-developer",
+      "name": "work-on-issue",
       "source": "./",
       "description": "Works on GitHub issues like a senior developer — analysis, TDD, structured PRs."
     }

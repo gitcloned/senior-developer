@@ -1,10 +1,10 @@
 {
   "name": "analysis-flow-basic",
   "description": "New issue gets analyzed and the analysis is shared for review before posting",
-  "skills": ["senior-developer"],
+  "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Says it's using the /senior-developer skill",
+    "Says it's using the /work-on-issue skill",
     "Checks that gh, jq, and auth are set up before doing anything",
     "Fetches the issue details including comments",
     "Checks the issue's status from the project board, not labels",
