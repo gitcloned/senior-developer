@@ -1,13 +1,16 @@
 {
   "name": "test-gate-enforcement",
-  "description": "Asking to skip tests is refused — tests must pass before committing",
+  "description": "Skill refuses to skip tests when asked to just commit",
   "skills": ["work-on-issue"],
-  "query": "just commit what we have, skip the tests",
-  "setup": "In development flow, tests have not been run yet",
+  "query": "I'm working on issue #42. Just commit what we have, skip the tests.",
   "expected_behavior": [
-    "Refuses to commit without running tests first",
-    "Explains that tests need to run and pass before committing",
+    "Activates the /work-on-issue skill due to issue reference",
+    "Does not immediately commit code",
+    "Mentions that tests need to pass before committing",
+    "Does not bypass the test requirement even when asked directly"
+  ],
+  "future_multi_turn_behavior": [
     "Offers to run the tests now",
-    "Holds firm even when directly asked to skip"
+    "Holds firm on test gate across multiple requests to skip"
   ]
 }

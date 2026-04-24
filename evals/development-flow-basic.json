@@ -1,11 +1,15 @@
 {
   "name": "development-flow-basic",
-  "description": "Issue in progress gets a full development cycle: plan, tests, code, PR",
+  "description": "Issue reference triggers skill activation with correct preflight and context",
   "skills": ["work-on-issue"],
   "query": "develop #42",
   "expected_behavior": [
-    "Says it's using the /work-on-issue skill",
-    "Checks that required tools are set up",
+    "Announces it is using the /work-on-issue skill",
+    "Runs preflight checks for required tools",
+    "Fetches the issue from GitHub",
+    "Confirms context with the user — shows repo, issue, and branch"
+  ],
+  "future_multi_turn_behavior": [
     "Fetches the issue and sees it's In Progress",
     "Reviews what's already done: branch, plan, PR, analysis",
     "Shares the assessment and asks before proceeding",

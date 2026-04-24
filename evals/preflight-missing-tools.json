@@ -1,13 +1,15 @@
 {
   "name": "preflight-missing-tools",
-  "description": "Missing tools are caught early with install instructions",
+  "description": "Missing gh is caught early with install instructions before any GitHub access",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
-  "setup": "Simulate: gh not installed",
+  "setup_env": {
+    "hide_tools": ["gh"]
+  },
   "expected_behavior": [
-    "Notices gh is not installed before doing anything else",
-    "Shows how to install it on macOS and Linux",
-    "Stops and waits — does not try to continue without it",
-    "Does not attempt to access GitHub at all"
+    "Detects that gh is not installed or not available",
+    "Provides install instructions for gh",
+    "Does not attempt to fetch the issue or access GitHub",
+    "Stops and waits for the user to install the missing tool"
   ]
 }

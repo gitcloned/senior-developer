@@ -1,13 +1,19 @@
 {
   "name": "resume-in-review",
-  "description": "Issue already in review is surfaced without restarting any work",
+  "description": "Issue reference triggers skill activation without restarting work",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
+    "Announces it is using the /work-on-issue skill",
+    "Runs preflight checks",
+    "Fetches the issue from GitHub",
+    "Confirms context with the user before proceeding",
+    "Does not create a new branch or PR in the first response"
+  ],
+  "future_multi_turn_behavior": [
     "Sees the issue is already In Review",
     "Tells the user it's in review",
     "Asks what they'd like to do",
-    "Does not restart analysis or development",
-    "Does not create a new branch or PR"
+    "Does not restart analysis or development"
   ]
 }

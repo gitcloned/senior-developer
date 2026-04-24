@@ -1,21 +1,25 @@
 {
   "name": "analysis-flow-basic",
-  "description": "New issue gets analyzed and the analysis is shared for review before posting",
+  "description": "New issue gets skill activation, preflight checks, and context confirmation",
   "skills": ["work-on-issue"],
   "query": "work on issue #42",
   "expected_behavior": [
-    "Says it's using the /work-on-issue skill",
-    "Checks that gh, jq, and auth are set up before doing anything",
-    "Fetches the issue details including comments",
-    "Checks the issue's status from the project board, not labels",
+    "Announces it is using the /work-on-issue skill",
+    "Runs preflight checks for gh and jq",
+    "Fetches the issue from GitHub",
+    "Identifies the repo and issue number correctly",
+    "Confirms context with the user before proceeding — shows repo, issue number, and branch"
+  ],
+  "future_multi_turn_behavior": [
+    "Checks the issue's status from the project board",
     "Recognizes this is a new issue and starts analyzing it",
-    "Looks around the codebase to understand what's relevant",
-    "Shows the draft analysis to the user before posting anything",
+    "Explores the codebase to understand what's relevant",
+    "Shows the draft analysis to the user before posting",
     "Analysis covers: what's wrong, options considered, recommendation, and open questions",
-    "Waits for the user to approve before posting",
+    "Waits for approval before posting",
     "Posts the analysis as a comment on the issue",
     "Sets project fields like task type, size, and estimate",
     "Moves the status to In Analysis",
-    "Stops here and waits — does not jump into coding"
+    "Stops and waits — does not jump into coding"
   ]
 }
